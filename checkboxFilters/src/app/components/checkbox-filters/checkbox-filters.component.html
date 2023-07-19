@@ -1,0 +1,48 @@
+<!-- left side content  -->
+<div style="display : flex" *ngIf="crops$ | async">
+  <div class="container-outer p-5 mt-3" >
+    <div class="filters">
+      <section class="example-section">
+        <span class="example-list-section">
+          <h6>Select Crop</h6>
+        </span>
+        <span class="example-list-section">
+          <ul>
+            <li *ngFor="let filter of nameFilters$ | async">
+
+              <input type="checkbox" [checked]="filter.checked" (change)="onNameFilterChange(filter)">
+
+              {{ filter.name }}
+            </li>
+          </ul>
+        </span>
+      </section>
+
+      <section class="example-section">
+        <span class="example-list-section">
+          <h6>Select District</h6>
+        </span>
+        <span class="example-list-section">
+          <ul>
+            <li *ngFor="let filter of filteredDistrictCheckboxes$ | async">
+
+              <input type="checkbox" [checked]="filter.checked" (change)="onDistrictFilterChange(filter)">
+
+              {{ filter.name }}
+            </li>
+          </ul>
+        </span>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Right side content  -->
+  <div class="card mt-5" style="width: 18rem" *ngFor="let crop of filteredCrops$ | async" [hidden]="!crop.checked">
+    <img src="../assets/wheat.jpg">
+    <div class="card-body">
+      <h5 class="card-title">{{ crop.name }}</h5>
+      <p class="card-text">({{ crop.district }})</p>
+    </div>
+  </div>
+</div>
