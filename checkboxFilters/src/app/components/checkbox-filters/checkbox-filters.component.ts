@@ -33,17 +33,12 @@ export class CheckboxFiltersComponent  {
         this.nameFilters$.next(
           names.map(name => ({ name, checked: true } as Filter))
         );
-        // const dictricts = Array.from(new Set(crops.map(crop => crop.district)));
-        // this.districtFilters$.next(
-        //   dictricts.map(name => ({ name, checked: true } as Filter))
-        // );
       }),
       shareReplay(1)
     );
     this.filteredCrops$ = combineLatest(
       this.crops$,
       this.nameFilters$,
-      // this.districtFilters$
     ).pipe(
       map(
         ([crops, nameFilters]: [
@@ -55,9 +50,6 @@ export class CheckboxFiltersComponent  {
              this.associatedNameFilter = nameFilters.find(
               filter => filter.name === item.name
             );
-            //  this.associatedDistrictFilter = districtFilters.find(
-            //   filter => filter.name === item.district
-            // );
             return (
               this.associatedNameFilter.checked
             );
@@ -66,29 +58,6 @@ export class CheckboxFiltersComponent  {
         }
       )
     );
-
-    // this.filteredDistrictCheckboxes$ = this.nameFilters$.pipe(
-    //   switchMap((nameFilters: Filter[]) => {
-    //     return this.crops$.pipe(
-    //       map(crops => {
-    //         const enabledNames = nameFilters
-    //           .filter(item => item.checked)
-    //           .map(filter => filter.name);
-    //         const enabledDistricts = Array.from(
-    //           new Set(
-    //             crops
-    //               .filter(crop => enabledNames.includes(crop.name))
-    //               .map(crop => crop.district)
-    //           )
-    //         );
-    //         const result = this.districtFilters$.value.filter((item:any) =>
-    //           enabledDistricts.includes(item.name)
-    //         );
-    //         return result;
-    //       })
-    //     );
-    //   })
-    // );
   }
 
   onNameFilterChange(item : any) {
@@ -98,11 +67,4 @@ export class CheckboxFiltersComponent  {
     ).checked = !item.checked;
     this.nameFilters$.next([...this.nameFilters$.value]);
   }
-
-  // onDistrictFilterChange(item:any) {
-  //   this.districtFilters$.value.find(
-  //     (filter:any) => filter.name === item.name
-  //   ).checked = !item.checked;
-  //   this.districtFilters$.next([...this.districtFilters$.value]);
-  // }
 }
