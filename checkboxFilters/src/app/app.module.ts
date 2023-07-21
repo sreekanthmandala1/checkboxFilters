@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckboxFiltersComponent } from './components/checkbox-filters/checkbox-filters.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MultipleCheckboxFilterComponent } from './components/multiple-checkbox-filter/multiple-checkbox-filter.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CheckboxFiltersComponent
+    CheckboxFiltersComponent,
+    MultipleCheckboxFilterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

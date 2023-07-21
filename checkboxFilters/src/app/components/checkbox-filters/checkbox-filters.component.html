@@ -10,7 +10,7 @@
           <ul>
             <li *ngFor="let filter of nameFilters$ | async">
 
-              <input type="checkbox" [checked]="filter.checked" (change)="onNameFilterChange(filter)">
+              <input type="checkbox"  (change)="onNameFilterChange(filter)">
 
               {{ filter.name }}
             </li>
@@ -25,7 +25,6 @@
     <img src="../assets/wheat.jpg">
     <div class="card-body">
       <h5 class="card-title">{{ crop.name }}</h5>
-      <p class="card-text">({{ crop.district }})</p>
     </div>
   </div>
 </div>

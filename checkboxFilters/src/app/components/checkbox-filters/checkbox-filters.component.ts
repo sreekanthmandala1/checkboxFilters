@@ -6,7 +6,7 @@ import { CropService } from "../../crop.service";
 
 interface Filter {
   name: string ;
-  checked: boolean;
+  // checked: boolean;
 }
 
 @Component({
@@ -15,13 +15,14 @@ interface Filter {
   styleUrls: ['./checkbox-filters.component.scss']
 })
 export class CheckboxFiltersComponent  {
-  crops$!: Observable<Crop[]>;
+  crops$!: Observable<any>;
   filteredCrops$!: Observable<Crop[]>;
   nameFilters$ = new BehaviorSubject<any>([]);
   districtFilters$ = new BehaviorSubject<any>([]);
   filteredDistrictCheckboxes$!: Observable<Filter[]>;
   associatedNameFilter : any;
   associatedDistrictFilter:any;
+  isChecked:boolean = false
 
   constructor(private cropService: CropService) {}
   
@@ -31,13 +32,13 @@ export class CheckboxFiltersComponent  {
         debugger
         const names = Array.from(new Set(crops.map(crop => crop.name)));
         this.nameFilters$.next(
-          names.map(name => ({ name, checked: true } as Filter))
+          names.map(name => ({ name} as Filter))
         );
       }),
       shareReplay(1)
     );
     this.filteredCrops$ = combineLatest(
-      this.crops$,
+      this.crops$, 
       this.nameFilters$,
     ).pipe(
       map(

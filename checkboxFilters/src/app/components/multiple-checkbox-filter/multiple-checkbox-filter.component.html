@@ -1,0 +1,32 @@
+<div style="overflow:hidden">
+    <div class="row">
+        <div class="col-2 bg-body-tertiary " style="height:100vh">
+            <div class="container ">
+                <div class="form-check py-2 " *ngFor="let checkboxArrays of checkboxArray;let i = index">
+                    <div style="display: flex;justify-content: baseline;align-items: center;" class="p-2">
+                        <div>
+                            <input class="form-check-input" type="checkbox" value="{{checkboxArrays.product}}" (change)="onChange($event)" checked>
+                        </div>
+                        <div>
+                            <label class="form-check-label fw-bold fs-5">
+                                {{checkboxArrays.product}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-10" style="overflow-y:scroll;height:90vh">
+            <span class="card mt-3 me-3" style="width: 200px;float:left;height:200px"
+                *ngFor="let productArrays of productArray">
+                <div style="height:45%;width: 30%;margin-left:30%">
+                    <img src="{{productArrays.productImage}}" class="card-img-top mt-2" style="height:80%;width: 100%;">
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{productArrays.productName}}</h5>
+                    <p class="card-text">{{productArrays.category}}</p>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>

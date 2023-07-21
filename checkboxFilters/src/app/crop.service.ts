@@ -11,14 +11,14 @@ import { Crop } from "./crop.model";
 export class CropService {
   constructor() { }
 
-  crops: Crop[] = CROPS;
+  crops:any = CROPS;
 
   getAllCrops(): Observable<Crop[]> {
     return of(this.crops);
   }
 
   getCrop(name: string): Observable<any> {
-    const crop = this.crops.filter(crop => crop.name === name)[0];
+    const crop = this.crops.filter((crop:any) => crop.name === name)[0];
     return of(crop);
   }
 }
