@@ -10,30 +10,13 @@
           <ul>
             <li *ngFor="let filter of nameFilters$ | async">
 
-              <input type="checkbox" [checked]="filter.checked" (change)="onNameFilterChange(filter)">
+              <input type="checkbox"  (change)="onNameFilterChange(filter)">
 
               {{ filter.name }}
             </li>
           </ul>
         </span>
       </section>
-
-      <section class="example-section">
-        <span class="example-list-section">
-          <h6>Select District</h6>
-        </span>
-        <span class="example-list-section">
-          <ul>
-            <li *ngFor="let filter of filteredDistrictCheckboxes$ | async">
-
-              <input type="checkbox" [checked]="filter.checked" (change)="onDistrictFilterChange(filter)">
-
-              {{ filter.name }}
-            </li>
-          </ul>
-        </span>
-      </section>
-
     </div>
   </div>
 
@@ -42,7 +25,6 @@
     <img src="../assets/wheat.jpg">
     <div class="card-body">
       <h5 class="card-title">{{ crop.name }}</h5>
-      <p class="card-text">({{ crop.district }})</p>
     </div>
   </div>
 </div>
