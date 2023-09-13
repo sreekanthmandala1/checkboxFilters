@@ -49,9 +49,7 @@ export class MultipleCheckboxFilterComponent implements OnInit {
   }
 
   onChange(event: any) {
-    
-    if(event.target.checked){
-      debugger
+    if(event.target.checked == true){
       this.tempArray = this.arrays.filter((e:any)=> e.category == event.target.value)
       this.productArray = []
       this.newArray.push(this.tempArray)
@@ -59,11 +57,10 @@ export class MultipleCheckboxFilterComponent implements OnInit {
         var firstArray = this.newArray[i]
         for(let i =0; i<firstArray.length ;i++){
           var obj = firstArray[i]
-          console.log(obj)
           this.productArray.push(obj)
         }
       }
-    }else{
+    }else if(event.target.checked == false){
       debugger
       this.tempArray = this.productArray.filter((e:any)=> e.category != event.target.value)
       this.newArray =[]
@@ -73,12 +70,17 @@ export class MultipleCheckboxFilterComponent implements OnInit {
         var firstArray = this.newArray[i]
         for(let i =0; i<firstArray.length ;i++){
           var obj = firstArray[i]
-          console.log(obj)
           this.productArray.push(obj)
         }
       }
+      if(event.target.checked == false && event.target.value == 'electronics'){
+        debugger
+        this.productArray = this.getListService.getProducts()
+      }
     }
+    // else if(event.target.checked == false && event.target.value == 'electronics'){
+    //   debugger
+    //   this.productArray = this.getListService.getProducts()
+    // }
   }
-
-
 }

@@ -5,7 +5,7 @@
                 <div class="form-check py-2 " *ngFor="let checkboxArrays of checkboxArray;let i = index">
                     <div style="display: flex;justify-content: baseline;align-items: center;" class="p-2">
                         <div>
-                            <input class="form-check-input" type="checkbox" value="{{checkboxArrays.product}}" (change)="onChange($event)" checked>
+                            <input class="form-check-input" type="checkbox" value="{{checkboxArrays.product}}" (change)="onChange($event)" >
                         </div>
                         <div>
                             <label class="form-check-label fw-bold fs-5">
