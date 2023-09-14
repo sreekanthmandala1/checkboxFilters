@@ -1,0 +1,18 @@
+<input [(ngModel)]="name" />
+<button (click)="postData()" id="post" class="postClass">post data</button>
+<div class="row">
+    <div class="col-6">
+        <div class="card" >
+            <div class="card-body">
+                <input class="stretched-link" type="checkbox" />
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <ul>
+            <li *ngFor="let student of studentsArray">
+                {{student.name}}
+            </li>
+        </ul>
+    </div>
+</div>

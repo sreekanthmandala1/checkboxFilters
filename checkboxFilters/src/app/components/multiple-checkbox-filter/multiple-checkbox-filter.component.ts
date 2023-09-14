@@ -43,7 +43,6 @@ export class MultipleCheckboxFilterComponent implements OnInit {
   }
 
   getProducts() {
-    debugger
     this.productArray = this.getListService.getProducts()
     this.arrays = this.getListService.getProducts()
   }
@@ -61,7 +60,6 @@ export class MultipleCheckboxFilterComponent implements OnInit {
         }
       }
     }else if(event.target.checked == false){
-      debugger
       this.tempArray = this.productArray.filter((e:any)=> e.category != event.target.value)
       this.newArray =[]
       this.productArray = []
@@ -74,12 +72,10 @@ export class MultipleCheckboxFilterComponent implements OnInit {
         }
       }
       if(event.target.checked == false && event.target.value == 'electronics'){
-        debugger
         this.productArray = this.getListService.getProducts()
       }
     }
     // else if(event.target.checked == false && event.target.value == 'electronics'){
-    //   debugger
     //   this.productArray = this.getListService.getProducts()
     // }
   }

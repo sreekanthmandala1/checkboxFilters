@@ -29,7 +29,6 @@ export class CheckboxFiltersComponent  {
   ngOnInit(): void {
     this.crops$ = this.cropService.getAllCrops().pipe(
       tap(crops => {
-        debugger
         const names = Array.from(new Set(crops.map(crop => crop.name)));
         this.nameFilters$.next(
           names.map(name => ({ name} as Filter))
@@ -62,7 +61,6 @@ export class CheckboxFiltersComponent  {
   }
 
   onNameFilterChange(item : any) {
-    debugger
     this.nameFilters$.value.find(
       (filter:any)  => filter.name === item.name
     ).checked = !item.checked;
